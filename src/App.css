@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "PT Sans", sans-serif;
+}
+
+.App {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  margin: 0 auto;
+  font-family: "Quicksand", sans-serif;
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 4px;
+  text-align: center;
+  font-family: "Abril Fatface", cursive;
+}
+
+.message {
+  position: fixed;
+  top: 20vh;
+  left: 10%;
+  text-align: center;
+  font-size: 1.25rem;
+  width: 80%;
+  background-color: steelblue;
+  color: white;
+  padding: 3rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+.category-filter {
+  margin-bottom: 2rem;
+}
+
+.category-filter fieldset {
+  padding: 1rem;
+  text-align: center;
+}
+
+.quotes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.quotes h3 {
+  font-size: 1.5rem;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.quotes p {
+  width: 100%;
+}
+
+.quote-card {
+  border: 1px solid #ccc;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  width: 100%;
+  max-width: 100%s;
+  background-color: rgb(249, 235, 217);
+}
+
+.quote-card .close-quote {
+  position: absolute;
+  padding: 1rem;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+}
+
+.quote-card .close-quote {
+  background-color: steelblue;
+  transition: 0.3s;
+}
+
+.quote-card .close-quote:hover {
+  color: steelblue;
+  background-color: white;
+}
+
+.quote-card .add-favorite {
+  width: 14ch;
+  margin: 2rem 0 0;
+  border: 1px solid #9f2b9f;
+  padding: 0.25rem;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.quote-card .add-favorite:hover {
+  box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.73);
+}
+
+.favorite-quotes h2 {
+  width: 100%;
+}
+.favorite-quotes .quote-card {
+  background-color: steelblue;
+  color: rgb(249, 235, 217);
+  border: 0;
+}
+
+.favorite-quotes .share-the-love {
+  background-color: white;
+  color: steelblue;
+  padding: 1rem;
+  margin-top: 1.2rem;
+}
+
+@media (min-width: 800px){
+  .quotes {
+    justify-content: space-between;
+  }
+  .quote-card {
+    width: 48%;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1400px){
+  .quotes {
+    justify-content: flex-start;
+  }
+  .quote-card {
+    width: calc(33% - 1rem);
+  }
+}
