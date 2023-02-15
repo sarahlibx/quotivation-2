@@ -1,3 +1,5 @@
+/* This is a copy of what is available via the API for info purposes */
+
 const quotes = [
   {
     _id: "lpxXplIA4ie",

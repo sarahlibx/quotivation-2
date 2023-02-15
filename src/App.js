@@ -9,10 +9,10 @@ import "./App.css";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const maxFaves = 3;
   const categories = ["all", "sports", "competition", "humorous"];
@@ -61,7 +61,6 @@ function App() {
     } else {
       const existingQuote = favoriteQuotes.find((quote) => quote._id === quoteId);
       if (existingQuote) {
-        // Is this quote already in our Favorites? IF so - don't allow to add.
         setShowMessage(true);
         setMessageText("This quote is already in your favorites! Choose another.");
       } else {
