@@ -1,6 +1,6 @@
 import React from "react";
 
-function FilterByCategory({ fetchQuotes, categories }) {
+function FilterByCategory({ categories, category, setCategory }) {
   return (
     <form
       className='category-filter'
@@ -14,15 +14,15 @@ function FilterByCategory({ fetchQuotes, categories }) {
         <select
           id='category'
           name='category'
+          value={category}
           onChange={(e) => {
-            const category = e.target.value;
-            fetchQuotes(category);
+            setCategory(e.target.value);
           }}
         >
           <optgroup label='Categories'>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
               </option>
             ))}
           </optgroup>

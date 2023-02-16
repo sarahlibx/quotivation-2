@@ -27,12 +27,13 @@ h1 {
 .message {
   position: fixed;
   top: 20vh;
-  left: 10%;
+  left: 15%;
   text-align: center;
   font-size: 1.25rem;
-  width: 80%;
-  background-color: steelblue;
-  color: white;
+  width: 70%;
+  background-color: rgb(233, 83, 88);
+  color: rgb(34, 33, 33);
+  border: 2px solid rgb(34, 33, 33);
   padding: 3rem 1.5rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -97,15 +98,19 @@ h1 {
 }
 
 .quote-card .add-favorite {
-  width: 14ch;
+  width: 16ch;
   margin: 2rem 0 0;
-  border: 1px solid #9f2b9f;
-  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(34, 33, 33);;
+  padding: 0.35rem;
   align-self: flex-end;
   cursor: pointer;
 }
 
 .quote-card .add-favorite:hover {
+  background-color: rgb(34, 33, 33);
+  color:rgb(249, 235, 217);
   box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.73);
 }
 

@@ -13,11 +13,12 @@ function App() {
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState("");
+  const [category, setCategory] = useState("all");
 
   const maxFaves = 3;
   const categories = ["all", "sports", "competition", "humorous"];
 
-  const fetchQuotes = async (category = "all") => {
+  const fetchQuotes = async (category) => {
     try {
       setLoading(true);
       const response = await fetch("https://api.quotable.io/quotes");
@@ -38,8 +39,8 @@ function App() {
   };
 
   useEffect(() => {
-    fetchQuotes();
-  }, []);
+    fetchQuotes(category);
+  }, [category]);
 
   useEffect(() => {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
@@ -55,9 +56,6 @@ function App() {
     if (favoriteQuotes.length >= maxFaves) {
       setShowMessage(true);
       setMessageText("Max number of Favorite Quotes reached. Please delete one to add another!");
-
-      console.log(messageText);
-      return;
     } else {
       const existingQuote = favoriteQuotes.find((quote) => quote._id === quoteId);
       if (existingQuote) {
@@ -92,7 +90,7 @@ function App() {
           <Loading />
         ) : (
           <>
-            <FilterByCategory fetchQuotes={fetchQuotes} categories={categories} />
+            <FilterByCategory fetchQuotes={fetchQuotes} categories={categories} setCategory={setCategory} category={category} />
             <p>You've got {quotes.length} quotes!</p>
             <section className='quotes'>
               {quotes.map((quote) => (

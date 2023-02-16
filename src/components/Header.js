@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
   return (
     <header>
-      <h1>Quotetanstic!</h1>
+      <h1>Quotetastic!</h1>
     </header>
   );
 }

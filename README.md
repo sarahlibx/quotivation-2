@@ -9,7 +9,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Fetch quotes from API
 - Filter quotes by category
 - Add up to three favorite quotes
-- Click on any favorite quote to copy the quote content - share the love with friends!
 - Favorite quotes are saved in LocalStorage
 
 Maybe TODO: dark / light theme?
