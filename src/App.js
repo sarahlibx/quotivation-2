@@ -76,7 +76,7 @@ function App() {
       <main>
         <section className='quotes favorite-quotes'>
           {favoriteQuotes.length === 0 ? (
-            <h2>Add up to three favorite quotes here!</h2>
+            <h2>Add up to {maxFaves} favorite quotes here!</h2>
           ) : (
             <h2>Favorite Quotes (max: {maxFaves})</h2>
           )}
@@ -90,7 +90,7 @@ function App() {
           <Loading />
         ) : (
           <>
-            <FilterByCategory fetchQuotes={fetchQuotes} categories={categories} setCategory={setCategory} category={category} />
+            <FilterByCategory categories={categories} setCategory={setCategory} category={category} />
             <p>You've got {quotes.length} quotes!</p>
             <section className='quotes'>
               {quotes.map((quote) => (

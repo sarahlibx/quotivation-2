@@ -5,7 +5,6 @@ const Message = ({ messageText, setShowMessage }) => {
     const timeout = setTimeout(() => {
       setShowMessage(false);
     }, 1500);
-    console.log("in message useEffect");
     return () => clearTimeout(timeout);
   }, [setShowMessage]);
 
