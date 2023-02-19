@@ -81,6 +81,8 @@ function App() {
         setShowMessage(true);
         setMessageText("This quote is already in your favorites! Choose another.");
       } else {
+        setShowMessage(true);
+        setMessageText("Added to Favorites! :)");
         setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
       }
     }
