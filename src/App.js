@@ -18,18 +18,13 @@ function App() {
   const maxFaves = 3;
   const categories = ["all", "sports", "competition", "humorous"];
 
-  const fetchQuotes = async (category) => {
+  const fetchQuotes = async () => {
     try {
       setLoading(true);
       const response = await fetch("https://api.quotable.io/quotes");
       const data = await response.json();
       const results = data.results;
-      if (category !== "all") {
-        const filteredResults = results.filter((result) => result.tags.includes(category));
-        setQuotes(filteredResults);
-      } else {
-        setQuotes(results);
-      }
+      setQuotes(results);
     } catch (error) {
       console.log("There was an error", error);
       setMessageText("Sorry - no Quotes available. Check your online connection.");
@@ -39,12 +34,18 @@ function App() {
   };
 
   useEffect(() => {
-    fetchQuotes(category);
-  }, [category]);
+    fetchQuotes();
+  }, []);
 
   useEffect(() => {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
+  const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.tags.includes(category)) : quotes;
 
   const removeFavoriteQuote = (quoteId) => {
     const updatedFavorites = favoriteQuotes.filter((quote) => quote._id !== quoteId);
@@ -74,6 +75,7 @@ function App() {
       {showMessage && <Message messageText={messageText} setShowMessage={setShowMessage} />}
       <Header />
       <main>
+        <p>You've got {quotes.length} quotes!</p>
         <section className='quotes favorite-quotes'>
           {favoriteQuotes.length === 0 ? (
             <h2>Add up to {maxFaves} favorite quotes here!</h2>
@@ -85,20 +87,14 @@ function App() {
               <FavoriteQuoteCard key={quote._id} quote={quote} removeFavoriteQuote={removeFavoriteQuote} />
             ))}
         </section>
-
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            <FilterByCategory categories={categories} setCategory={setCategory} category={category} />
-            <p>You've got {quotes.length} quotes!</p>
-            <section className='quotes'>
-              {quotes.map((quote) => (
-                <QuoteCard key={quote._id} quote={quote} addToFavorites={addToFavorites} />
-              ))}
-            </section>
-          </>
-        )}
+        <FilterByCategory categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
+        <section className='quotes'>
+          {loading ? (
+            <Loading />
+          ) : (
+            filteredQuotes.map((quote) => <QuoteCard key={quote._id} quote={quote} addToFavorites={addToFavorites} />)
+          )}
+        </section>
       </main>
     </div>
   );

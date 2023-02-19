@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-# Is it fantasic? No - it's better - it's ✨ QUOTETASTIC! ✨
+# Is it fantastic? No - it's better - it's ✨ QUOTETASTIC! ✨
 
 ### Features:
 - Fetch quotes from API
