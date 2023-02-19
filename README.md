@@ -9,9 +9,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Fetch quotes from API
 - Filter quotes by category
 - Add up to three favorite quotes
+- Get a delightful random quote and generate a new one when you like
 - Favorite quotes are saved in LocalStorage
-
-Maybe TODO: dark / light theme?
 
 ## Available Scripts
 
