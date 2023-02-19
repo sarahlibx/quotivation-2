@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import QuoteCard from "./components/QuoteCard";
-import Loading from "./components/Loading";
-import FavoriteQuoteCard from "./components/FavoriteQuoteCard";
-import FilterByCategory from "./components/FilterByCategory";
+import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
+import CategoryForm from "./components/quotes/CategoryForm";
+import FilteredQuotes from "./components/quotes/FilteredQuotes";
 import Message from "./components/Message";
 import "./App.css";
 
@@ -16,6 +15,7 @@ function App() {
   const [category, setCategory] = useState("all");
 
   const maxFaves = 3;
+  // TODO I'd like to make this dynamic
   const categories = ["all", "sports", "competition", "humorous"];
 
   const fetchQuotes = async () => {
@@ -45,8 +45,6 @@ function App() {
     setCategory(e.target.value);
   };
 
-  const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.tags.includes(category)) : quotes;
-
   const removeFavoriteQuote = (quoteId) => {
     const updatedFavorites = favoriteQuotes.filter((quote) => quote._id !== quoteId);
     setFavoriteQuotes(updatedFavorites);
@@ -68,33 +66,15 @@ function App() {
     }
   };
 
-  // TODO: Add a decent loading gif thingy
-
   return (
     <div className='App'>
       {showMessage && <Message messageText={messageText} setShowMessage={setShowMessage} />}
       <Header />
       <main>
         <p>You've got {quotes.length} quotes!</p>
-        <section className='quotes favorite-quotes'>
-          {favoriteQuotes.length === 0 ? (
-            <h2>Add up to {maxFaves} favorite quotes here!</h2>
-          ) : (
-            <h2>Favorite Quotes (max: {maxFaves})</h2>
-          )}
-          {favoriteQuotes.length > 0 &&
-            favoriteQuotes.map((quote) => (
-              <FavoriteQuoteCard key={quote._id} quote={quote} removeFavoriteQuote={removeFavoriteQuote} />
-            ))}
-        </section>
-        <FilterByCategory categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
-        <section className='quotes'>
-          {loading ? (
-            <Loading />
-          ) : (
-            filteredQuotes.map((quote) => <QuoteCard key={quote._id} quote={quote} addToFavorites={addToFavorites} />)
-          )}
-        </section>
+        <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={maxFaves} removeFavoriteQuote={removeFavoriteQuote} />
+        <FilteredQuotes loading={loading} category={category} quotes={quotes} addToFavorites={addToFavorites} />
       </main>
     </div>
   );

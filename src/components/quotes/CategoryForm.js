@@ -1,6 +1,6 @@
 import React from "react";
 
-function FilterByCategory({ categories, category, handleCategoryChange }) {
+function CategoryForm({ categories, category, handleCategoryChange }) {
   return (
     <form
       className='category-filter'
@@ -25,4 +25,4 @@ function FilterByCategory({ categories, category, handleCategoryChange }) {
   );
 }
 
-export default FilterByCategory;
+export default CategoryForm;
