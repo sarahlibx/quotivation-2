@@ -13,7 +13,8 @@ function FilteredQuotes({ category, loading, quotes, addToFavorites }) {
     <section>
       <div className='quotes'>
         <p>
-          You've got {filteredQuotes.length} {category !== "all" ? category : "great"} quotes!
+          You've got {filteredQuotes.length} {category !== "all" ? category : "great"}{" "}
+          {filteredQuotes.length === 1 ? "quote" : "quotes"}!
         </p>
         {filteredQuotes.map((quote) => (
           <QuoteCard key={quote._id} quote={quote} addToFavorites={addToFavorites} />
