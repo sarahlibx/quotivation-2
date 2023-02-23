@@ -13,9 +13,9 @@ function CategoryForm({ categories, category, handleCategoryChange }) {
         <label htmlFor='category'>Category:</label>
         <select id='category' name='category' value={category} onChange={handleCategoryChange}>
           <optgroup label='Categories'>
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
               </option>
             ))}
           </optgroup>

@@ -8,7 +8,14 @@ const Message = ({ messageText, setShowMessage }) => {
     return () => clearTimeout(timeout);
   }, [setShowMessage]);
 
-  return <div className='message'>{messageText}</div>;
+  return (
+    <div className='message' style={{ display: "flex", justifyContent: "space-between" }}>
+      {messageText}{" "}
+      <span className='close-message' onClick={() => setShowMessage(false)}>
+        X
+      </span>
+    </div>
+  );
 };
 
 export default Message;

@@ -1,17 +1,13 @@
 import React from "react";
 import FavoriteQuoteCard from "./FavoriteQuoteCard";
-import Loading from "../Loading";
 
-function FavoriteQuotes({ favoriteQuotes, maxFaves, removeFavoriteQuote, loading }) {
-  if (loading) {
-    return <Loading />;
-  }
+function FavoriteQuotes({ favoriteQuotes, maxFaves, removeFavoriteQuote }) {
   return (
     <section className='quotes favorite-quotes'>
       {favoriteQuotes.length === 0 ? (
-        <h2>Add up to {maxFaves} favorite quotes here!</h2>
+        <h3>Add up to {maxFaves} favorite quotes here!</h3>
       ) : (
-        <h2>Favorite Quotes (max: {maxFaves})</h2>
+        <h3>Favorite Quotes (max: {maxFaves})</h3>
       )}
       {favoriteQuotes.length > 0 &&
         favoriteQuotes.map((quote) => (

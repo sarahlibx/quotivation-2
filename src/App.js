@@ -4,6 +4,7 @@ import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
 import CategoryForm from "./components/quotes/CategoryForm";
 import FilteredQuotes from "./components/quotes/FilteredQuotes";
 import Message from "./components/Message";
+import Loading from "./components/Loading";
 import RandomQuote from "./components/quotes/RandomQuote";
 import "./App.css";
 
@@ -57,6 +58,8 @@ function App() {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
 
+  const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.tags.includes(category)) : quotes;
+
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
@@ -92,6 +95,7 @@ function App() {
     <div className='App'>
       {showMessage && <Message messageText={messageText} setShowMessage={setShowMessage} />}
       <Header />
+
       <main>
         <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFavoriteQuote={removeFavoriteQuote} />
         {randomQuote && (
@@ -102,7 +106,11 @@ function App() {
           />
         )}
         <CategoryForm categories={allCategories} handleCategoryChange={handleCategoryChange} category={category} />
-        <FilteredQuotes loading={loading} category={category} quotes={quotes} addToFavorites={addToFavorites} />
+        {loading ? (
+          <Loading />
+        ) : (
+          <FilteredQuotes category={category} filteredQuotes={filteredQuotes} addToFavorites={addToFavorites} />
+        )}
       </main>
     </div>
   );

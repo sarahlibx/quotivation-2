@@ -6,6 +6,23 @@ html {
   font-family: "PT Sans", sans-serif;
 }
 
+h1 {
+  font-size: 4rem;
+  letter-spacing: 4px;
+  text-align: center;
+  font-family: "Abril Fatface", cursive;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3125rem;
+}
+
 .App {
   width: 90%;
   max-width: 1200px;
@@ -13,15 +30,8 @@ html {
 }
 
 main {
-  margin: 0 auto;
+  margin: 6rem auto 0;
   font-family: "Quicksand", sans-serif;
-}
-
-h1 {
-  font-size: 4rem;
-  letter-spacing: 4px;
-  text-align: center;
-  font-family: "Abril Fatface", cursive;
 }
 
 .message {
@@ -31,14 +41,81 @@ h1 {
   text-align: center;
   font-size: 1.25rem;
   width: 70%;
-  background-color: #FAFFD8;
-  color: #54577C;
-  border: 2px solid #54577C;
+  background-color: #faffd8;
+  color: #54577c;
+  border: 2px solid #54577c;
   padding: 3rem 1.5rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+}
+
+.message:hover .close-message {
+  opacity: 1;
+}
+
+.message .close-message {
+  position: absolute;
+  opacity: 0;
+  right: 5px;
+  top: 5px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.message .close-message:hover {
+  background-color: #54577c;
+  color: #faffd8;
+}
+
+.favorite-quotes h3 {
+  width: 100%;
+}
+
+.favorite-quotes .quote-card {
+  background-color: #54577c;
+  color: #faffd8;
+  border: 0;
+}
+
+.random-quote header {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.random-quote header h3 {
+  font-size: 1.3125rem;
+}
+
+.random-quote header button {
+  background-color: #54577c;
+  color: #faffd8;
+  padding: 7px 12px;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.random-quote header button:hover {
+  background-color: #222332;
+  color: #f6f9e3;
+  box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.33);
+}
+
+.random-quote .quote-card {
+  background-color: #faffd8;
+  width: 100%;
+  margin-bottom: 2rem;
+  background-origin: padding-box;
 }
 
 .category-filter {
@@ -67,7 +144,7 @@ h1 {
 
 .quotes h3 {
   font-size: 1.5rem;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 .quotes p {
@@ -84,42 +161,8 @@ h1 {
   padding: 2rem;
   width: 100%;
   max-width: 100%s;
-  background-color: #9AA899;
+  background-color: #9aa899;
 }
-
-.random-quote .quote-card {
-  background-color: #FAFFD8;
-  width: 100%;
-  margin-bottom: 2rem;
-  background-origin: padding-box;
-}
-
-.random-quote header {
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.random-quote header button {
-  background-color: #54577C;
-  color: #FAFFD8;
-  padding: 5px 10px;
-  border: 0;
-  font-size: 1.25rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.random-quote header button:hover {
-  background-color: #222332;
-  color:#f6f9e3;
-  box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.33);
-}
-
 
 .quote-card .close-quote {
   position: absolute;
@@ -130,13 +173,13 @@ h1 {
 }
 
 .quote-card .close-quote {
-  background-color: #54577C;
+  background-color: #54577c;
   transition: 0.3s;
 }
 
 .quote-card .close-quote:hover {
-  color: #54577C;
-  background-color: #FAFFD8;
+  color: #54577c;
+  background-color: #faffd8;
 }
 
 .quote-card .add-favorite {
@@ -144,7 +187,7 @@ h1 {
   margin: 2rem 0 0;
   display: flex;
   justify-content: center;
-  border: 1px solid #54577C;
+  border: 1px solid #54577c;
   padding: 0.35rem;
   align-self: flex-end;
   cursor: pointer;
@@ -152,21 +195,12 @@ h1 {
 }
 
 .quote-card .add-favorite:hover {
-  background-color: #54577C;
-  color:#FAFFD8;
+  background-color: #54577c;
+  color: #faffd8;
   box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.33);
 }
 
-.favorite-quotes h2 {
-  width: 100%;
-}
-.favorite-quotes .quote-card {
-  background-color: #54577C;
-  color: #FAFFD8;
-  border: 0;
-}
-
-@media (min-width: 800px){
+@media (min-width: 800px) {
   .quotes {
     justify-content: space-between;
   }
@@ -186,7 +220,7 @@ h1 {
   }
 }
 
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .quotes {
     justify-content: flex-start;
   }
