@@ -16,7 +16,7 @@ function App() {
   const [messageText, setMessageText] = useState("");
   const [category, setCategory] = useState("all");
   const [randomQuote, setRandomQuote] = useState("");
-  const [allCategories, setAllCategories] = useState(["all"]);
+  const categories = ["all", "sports", "humorous", "competition", "business"];
 
   const MAXFAVES = 3;
 
@@ -44,17 +44,6 @@ function App() {
   }, [quotes]);
 
   useEffect(() => {
-    const quoteCategories = quotes.map((quote) => [...quote.tags]);
-    const catObj = {};
-    for (let cat of quoteCategories) {
-      for (let item of cat) {
-        catObj[item] = item;
-      }
-    }
-    setAllCategories(["all", ...Object.values(catObj)]);
-  }, [quotes]);
-
-  useEffect(() => {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
 
@@ -64,11 +53,11 @@ function App() {
     setCategory(e.target.value);
   };
 
-  const handleAnotherRandomQuoteClick = () => {
+  const displayAnotherRandomQuote = () => {
     setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)]);
   };
 
-  const removeFavoriteQuote = (quoteId) => {
+  const removeFromFavorites = (quoteId) => {
     const updatedFavorites = favoriteQuotes.filter((quote) => quote._id !== quoteId);
     setFavoriteQuotes(updatedFavorites);
   };
@@ -97,15 +86,15 @@ function App() {
       <Header />
 
       <main>
-        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFavoriteQuote={removeFavoriteQuote} />
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFromFavorites={removeFromFavorites} />
         {randomQuote && (
           <RandomQuote
             addToFavorites={addToFavorites}
             randomQuote={randomQuote}
-            fetchAnotherRandomQuote={handleAnotherRandomQuoteClick}
+            fetchAnotherRandomQuote={displayAnotherRandomQuote}
           />
         )}
-        <CategoryForm categories={allCategories} handleCategoryChange={handleCategoryChange} category={category} />
+        <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
         {loading ? (
           <Loading />
         ) : (

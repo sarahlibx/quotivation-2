@@ -1,9 +1,9 @@
 import React from "react";
 
-function FavoriteQuoteCard({ quote, removeFavoriteQuote }) {
+function FavoriteQuoteCard({ quote, removeFromFavorites }) {
   return (
     <div className='quote-card'>
-      <span className='close-quote' onClick={() => removeFavoriteQuote(quote._id)}>
+      <span className='close-quote' onClick={() => removeFromFavorites(quote._id)}>
         X
       </span>
       <h3>{quote.content}</h3>

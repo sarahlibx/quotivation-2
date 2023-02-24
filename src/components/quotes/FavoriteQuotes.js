@@ -1,7 +1,7 @@
 import React from "react";
 import FavoriteQuoteCard from "./FavoriteQuoteCard";
 
-function FavoriteQuotes({ favoriteQuotes, maxFaves, removeFavoriteQuote }) {
+function FavoriteQuotes({ favoriteQuotes, maxFaves, removeFromFavorites }) {
   return (
     <section className='quotes favorite-quotes'>
       {favoriteQuotes.length === 0 ? (
@@ -11,7 +11,7 @@ function FavoriteQuotes({ favoriteQuotes, maxFaves, removeFavoriteQuote }) {
       )}
       {favoriteQuotes.length > 0 &&
         favoriteQuotes.map((quote) => (
-          <FavoriteQuoteCard key={quote._id} quote={quote} removeFavoriteQuote={removeFavoriteQuote} />
+          <FavoriteQuoteCard key={quote._id} quote={quote} removeFromFavorites={removeFromFavorites} />
         ))}
     </section>
   );
