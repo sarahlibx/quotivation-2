@@ -6,6 +6,19 @@ html {
   font-family: "PT Sans", sans-serif;
 }
 
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  color: #54577c;
+  width: 70px;
+  height: 70px;
+  margin: 1rem auto;
+}
+
 h1 {
   font-size: 4rem;
   letter-spacing: 4px;

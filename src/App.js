@@ -4,7 +4,7 @@ import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
 import CategoryForm from "./components/quotes/CategoryForm";
 import FilteredQuotes from "./components/quotes/FilteredQuotes";
 import Message from "./components/Message";
-import Loading from "./components/Loading";
+import { Loader } from "react-feather";
 import RandomQuote from "./components/quotes/RandomQuote";
 import "./App.css";
 
@@ -47,6 +47,8 @@ function App() {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
 
+  // Whenever either the 'category' or 'quotes' state values change,
+  // the component re-renders and 'filteredQuotes' is re-calculated.
   const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.tags.includes(category)) : quotes;
 
   const handleCategoryChange = (e) => {
@@ -91,12 +93,12 @@ function App() {
           <RandomQuote
             addToFavorites={addToFavorites}
             randomQuote={randomQuote}
-            fetchAnotherRandomQuote={displayAnotherRandomQuote}
+            displayAnotherRandomQuote={displayAnotherRandomQuote}
           />
         )}
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
         {loading ? (
-          <Loading />
+          <Loader />
         ) : (
           <FilteredQuotes category={category} filteredQuotes={filteredQuotes} addToFavorites={addToFavorites} />
         )}
