@@ -11,7 +11,7 @@ function FavoriteQuotes({ favoriteQuotes, maxFaves, removeFromFavorites }) {
       )}
       {favoriteQuotes.length > 0 &&
         favoriteQuotes.map((quote) => (
-          <FavoriteQuoteCard key={quote._id} quote={quote} removeFromFavorites={removeFromFavorites} />
+          <FavoriteQuoteCard key={quote.id} quote={quote} removeFromFavorites={removeFromFavorites} />
         ))}
     </section>
   );

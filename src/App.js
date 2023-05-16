@@ -16,16 +16,18 @@ function App() {
   const [messageText, setMessageText] = useState("");
   const [category, setCategory] = useState("all");
   const [randomQuote, setRandomQuote] = useState("");
-  const categories = ["all", "sports", "humorous", "competition", "business"];
+  const categories = ["all", "Leadership", "Empathy", "Motivation", "Learning", "Success", "Empowerment"];
+  const quotesUrl =
+    "https://gist.githubusercontent.com/redrambles/d50714387b93d7fe3e78b346c158719e/raw/254337559896fd3b8e288e394f337ac098ed5cbb/quotes.js";
 
   const MAXFAVES = 3;
 
   const fetchQuotes = async () => {
     try {
       setLoading(true);
-      const response = await fetch("https://api.quotable.io/quotes");
-      const data = await response.json();
-      const results = data.results;
+      const response = await fetch(quotesUrl);
+      const results = await response.json();
+
       setQuotes(results);
     } catch (error) {
       console.log("There was an error", error);
@@ -49,7 +51,7 @@ function App() {
 
   // Whenever either the 'category' or 'quotes' state values change,
   // the component re-renders and 'filteredQuotes' is re-calculated.
-  const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.tags.includes(category)) : quotes;
+  const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
@@ -60,17 +62,17 @@ function App() {
   };
 
   const removeFromFavorites = (quoteId) => {
-    const updatedFavorites = favoriteQuotes.filter((quote) => quote._id !== quoteId);
+    const updatedFavorites = favoriteQuotes.filter((quote) => quote.id !== quoteId);
     setFavoriteQuotes(updatedFavorites);
   };
 
   const addToFavorites = (quoteId) => {
-    const selectedQuote = quotes.find((quote) => quote._id === quoteId);
+    const selectedQuote = quotes.find((quote) => quote.id === quoteId);
     if (favoriteQuotes.length >= MAXFAVES) {
       setShowMessage(true);
       setMessageText("Max number of Favorite Quotes reached. Please delete one to add another!");
     } else {
-      const existingQuote = favoriteQuotes.find((quote) => quote._id === quoteId);
+      const existingQuote = favoriteQuotes.find((quote) => quote.id === quoteId);
       if (existingQuote) {
         setShowMessage(true);
         setMessageText("This quote is already in your favorites! Choose another.");
