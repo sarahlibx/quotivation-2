@@ -1,7 +1,7 @@
 import React from "react";
 import QuoteCard from "./QuoteCard";
 
-function FilteredQuotes({ filteredQuotes }) {
+function Quotes({ filteredQuotes }) {
   return (
     <section>
       <div className='quotes'>
@@ -13,4 +13,4 @@ function FilteredQuotes({ filteredQuotes }) {
   );
 }
 
-export default FilteredQuotes;
+export default Quotes;
