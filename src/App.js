@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import { Loader } from "react-feather";
 import CategoryForm from "./components/quotes/CategoryForm";
+import FavoriteQuoteCard from "./components/quotes/FavoriteQuoteCard";
 import RandomQuote from "./components/quotes/RandomQuote";
 import Quotes from "./components/quotes/Quotes";
 import "./App.css";
@@ -64,17 +65,25 @@ function App() {
     }
   };
 
+  const removeFromFavorites = (quoteId) => {
+    const updatedFavorites = favoriteQuotes.filter((quote) => quote.id !== quoteId);
+    setFavoriteQuotes(updatedFavorites);
+  };
+
   return (
     <div className='App'>
       <Header />
       <main>
         <section className='quotes favorite-quotes'>
           {favoriteQuotes.length === 0 ? (
-            <h2>Add up to {MAXFAVES} favorite quotes here!</h2>
+            <h3>Add up to {MAXFAVES} favorite quotes here!</h3>
           ) : (
-            <h2>Favorite Quotes (max: {MAXFAVES})</h2>
+            <h3>Favorite Quotes (max: {MAXFAVES})</h3>
           )}
-          {JSON.stringify(favoriteQuotes)}
+          {favoriteQuotes.length > 0 &&
+            favoriteQuotes.map((quote) => (
+              <FavoriteQuoteCard key={quote._id} quote={quote} removeFromFavorites={removeFromFavorites} />
+            ))}
         </section>
         {randomQuote && <RandomQuote randomQuote={randomQuote} displayRandomQuote={displayRandomQuote} />}
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
