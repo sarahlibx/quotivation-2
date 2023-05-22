@@ -15,7 +15,7 @@ function App() {
   const [randomQuote, setRandomQuote] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState("");
-  const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes") || []));
   const quotesUrl =
     "https://gist.githubusercontent.com/redrambles/d50714387b93d7fe3e78b346c158719e/raw/254337559896fd3b8e288e394f337ac098ed5cbb/quotes.js";
   const categories = ["all", "Leadership", "Empathy", "Motivation", "Learning", "Success", "Empowerment"];
@@ -42,6 +42,10 @@ function App() {
   useEffect(() => {
     displayRandomQuote();
   }, [quotes]);
+
+  useEffect(() => {
+    window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
+  }, [favoriteQuotes]);
 
   const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
 
