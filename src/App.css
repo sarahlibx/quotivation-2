@@ -62,6 +62,8 @@ main {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  display: flex;
+  justify-content: "space-between";
 }
 
 .message:hover .close-message {

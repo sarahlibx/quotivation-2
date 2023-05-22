@@ -5,6 +5,7 @@ import CategoryForm from "./components/quotes/CategoryForm";
 import FavoriteQuoteCard from "./components/quotes/FavoriteQuoteCard";
 import RandomQuote from "./components/quotes/RandomQuote";
 import Quotes from "./components/quotes/Quotes";
+import Message from "./components/Message";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("all");
   const [randomQuote, setRandomQuote] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+  const [messageText, setMessageText] = useState("");
   const [favoriteQuotes, setFavoriteQuotes] = useState([]);
   const quotesUrl =
     "https://gist.githubusercontent.com/redrambles/d50714387b93d7fe3e78b346c158719e/raw/254337559896fd3b8e288e394f337ac098ed5cbb/quotes.js";
@@ -53,13 +56,16 @@ function App() {
   const addToFavorites = (quoteId) => {
     const selectedQuote = quotes.find((quote) => quote.id === quoteId);
     if (favoriteQuotes.length >= MAXFAVES) {
-      console.log("Max number of Favorite Quotes reached. Please delete one to add another!");
+      setShowMessage(true);
+      setMessageText("Max number of Favorite Quotes reached. Please delete one to add another!");
     } else {
       const existingQuote = favoriteQuotes.find((quote) => quote.id === quoteId);
       if (existingQuote) {
-        console.log("This quote is already in your favorites! Choose another.");
+        setShowMessage(true);
+        setMessageText("This quote is already in your favorites! Choose another.");
       } else {
-        console.log("Added to Favorites! :)");
+        setShowMessage(true);
+        setMessageText("Added to Favorites! :)");
         setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
       }
     }
@@ -70,8 +76,13 @@ function App() {
     setFavoriteQuotes(updatedFavorites);
   };
 
+  const removeMessage = () => {
+    setShowMessage(false);
+  };
+
   return (
     <div className='App'>
+      {showMessage && <Message messageText={messageText} removeMessage={removeMessage} />}
       <Header />
       <main>
         <section className='quotes favorite-quotes'>
@@ -82,10 +93,12 @@ function App() {
           )}
           {favoriteQuotes.length > 0 &&
             favoriteQuotes.map((quote) => (
-              <FavoriteQuoteCard key={quote._id} quote={quote} removeFromFavorites={removeFromFavorites} />
+              <FavoriteQuoteCard key={quote.id} quote={quote} removeFromFavorites={removeFromFavorites} />
             ))}
         </section>
-        {randomQuote && <RandomQuote randomQuote={randomQuote} displayRandomQuote={displayRandomQuote} />}
+        {randomQuote && (
+          <RandomQuote randomQuote={randomQuote} displayRandomQuote={displayRandomQuote} addToFavorites={addToFavorites} />
+        )}
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
         {loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} category={category} addToFavorites={addToFavorites} />}
       </main>
