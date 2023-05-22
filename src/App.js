@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import { Loader } from "react-feather";
 import CategoryForm from "./components/quotes/CategoryForm";
-import FavoriteQuoteCard from "./components/quotes/FavoriteQuoteCard";
+import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
 import RandomQuote from "./components/quotes/RandomQuote";
 import Quotes from "./components/quotes/Quotes";
 import Message from "./components/Message";
@@ -89,17 +89,7 @@ function App() {
       {showMessage && <Message messageText={messageText} removeMessage={removeMessage} />}
       <Header />
       <main>
-        <section className='quotes favorite-quotes'>
-          {favoriteQuotes.length === 0 ? (
-            <h3>Add up to {MAXFAVES} favorite quotes here!</h3>
-          ) : (
-            <h3>Favorite Quotes (max: {MAXFAVES})</h3>
-          )}
-          {favoriteQuotes.length > 0 &&
-            favoriteQuotes.map((quote) => (
-              <FavoriteQuoteCard key={quote.id} quote={quote} removeFromFavorites={removeFromFavorites} />
-            ))}
-        </section>
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFromFavorites={removeFromFavorites} />
         {randomQuote && (
           <RandomQuote randomQuote={randomQuote} displayRandomQuote={displayRandomQuote} addToFavorites={addToFavorites} />
         )}
