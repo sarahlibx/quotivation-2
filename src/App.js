@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { Loader } from "react-feather";
 import CategoryForm from "./components/quotes/CategoryForm";
 import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
@@ -96,6 +97,7 @@ function App() {
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
         {loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} category={category} addToFavorites={addToFavorites} />}
       </main>
+      <Footer />
     </div>
   );
 }
