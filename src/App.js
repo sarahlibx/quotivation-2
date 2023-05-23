@@ -12,14 +12,14 @@ import "./App.css";
 function App() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState("All");
   const [randomQuote, setRandomQuote] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState("");
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes") || []));
   const quotesUrl =
     "https://gist.githubusercontent.com/redrambles/d50714387b93d7fe3e78b346c158719e/raw/254337559896fd3b8e288e394f337ac098ed5cbb/quotes.js";
-  const categories = ["all", "Leadership", "Empathy", "Motivation", "Learning", "Success", "Empowerment"];
+  const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "Success", "Empowerment"];
 
   const MAXFAVES = 3;
 
@@ -48,7 +48,7 @@ function App() {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
 
-  const filteredQuotes = category !== "all" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
+  const filteredQuotes = category !== "All" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);

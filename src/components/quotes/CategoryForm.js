@@ -12,13 +12,11 @@ function CategoryForm({ categories, category, handleCategoryChange }) {
         <legend>Filter Quotes</legend>
         <label htmlFor='category'>Category:</label>
         <select id='category' name='category' value={category} onChange={handleCategoryChange}>
-          <optgroup label='Categories'>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </optgroup>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </fieldset>
     </form>

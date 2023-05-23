@@ -7,7 +7,7 @@ function Quotes({ filteredQuotes, addToFavorites, category }) {
       <div className='quotes'>
         {
           <p>
-            You have {filteredQuotes.length} great {category !== "all" && category}{" "}
+            You have {filteredQuotes.length} great {category !== "All" && category}{" "}
             {filteredQuotes.length === 1 ? "quote" : "quotes"}.
           </p>
         }
