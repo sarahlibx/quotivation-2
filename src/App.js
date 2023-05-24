@@ -18,7 +18,7 @@ function App() {
   const [messageText, setMessageText] = useState("");
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const quotesUrl =
-    "https://gist.githubusercontent.com/redrambles/d50714387b93d7fe3e78b346c158719e/raw/254337559896fd3b8e288e394f337ac098ed5cbb/quotes.js";
+    "https://gist.githubusercontent.com/skillcrush-curriculum/6365d193df80174943f6664c7c6dbadf/raw/61eba3576351b30987c4af1fadb2619af5fc4064/quotes.js";
   const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "Success", "Empowerment"];
 
   const MAXFAVES = 3;
