@@ -11,7 +11,8 @@ const Message = ({ messageText, removeMessage }) => {
   });
   return (
     <div className='message'>
-      {messageText}{" "}
+      <p>{messageText}</p>
+
       <span className='close-message' onClick={removeMessage}>
         X
       </span>

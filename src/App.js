@@ -61,16 +61,16 @@ function App() {
   const addToFavorites = (quoteId) => {
     const selectedQuote = quotes.find((quote) => quote.id === quoteId);
     if (favoriteQuotes.length >= MAXFAVES) {
-      setShowMessage(true);
       setMessageText("Max number of Favorite Quotes reached. Please delete one to add another!");
+      setShowMessage(true);
     } else {
       const existingQuote = favoriteQuotes.find((quote) => quote.id === quoteId);
       if (existingQuote) {
-        setShowMessage(true);
         setMessageText("This quote is already in your favorites! Choose another.");
-      } else {
         setShowMessage(true);
+      } else {
         setMessageText("Added to Favorites! :)");
+        setShowMessage(true);
         setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
       }
     }
