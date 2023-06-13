@@ -207,21 +207,23 @@ footer {
 }
 
 .quote-card .add-favorite {
-  width: 16ch;
+  width: 5ch;
   margin: 2rem 0 0;
   display: flex;
-  justify-content: center;
-  border: 1px solid #54577c;
+  justify-content: flex-end;
   padding: 0.35rem;
   align-self: flex-end;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.quote-card .add-favorite:hover {
-  background-color: #54577c;
+.quote-card .add-favorite svg {
+  color: gray;
+  max-width: 60px;
+}
+
+.quote-card .add-favorite:hover svg {
   color: #faffd8;
-  box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.33);
 }
 
 @media (min-width: 800px) {

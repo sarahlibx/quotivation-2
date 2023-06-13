@@ -60,17 +60,15 @@ function App() {
 
   const addToFavorites = (quoteId) => {
     const selectedQuote = quotes.find((quote) => quote.id === quoteId);
-    if (favoriteQuotes.length >= MAXFAVES) {
-      setMessageText("Max number of Favorite Quotes reached. Please delete one to add another!");
-      setShowMessage(true);
+    const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id);
+
+    if (alreadyFavorite) {
+      console.log("already in favorites");
+      removeFromFavorites(quoteId);
     } else {
-      const existingQuote = favoriteQuotes.find((quote) => quote.id === quoteId);
-      if (existingQuote) {
-        setMessageText("This quote is already in your favorites! Choose another.");
-        setShowMessage(true);
-      } else {
-        setMessageText("Added to Favorites! :)");
-        setShowMessage(true);
+      if (favoriteQuotes.length < MAXFAVES) {
+        // setMessageText("Added to Favorites! :)");
+        // setShowMessage(true);
         setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
       }
     }
@@ -95,11 +93,19 @@ function App() {
           <RandomQuote randomQuote={randomQuote} displayRandomQuote={displayRandomQuote} addToFavorites={addToFavorites} />
         )}
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
-        {loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} category={category} addToFavorites={addToFavorites} />}
+        {loading ? (
+          <Loader />
+        ) : (
+          <Quotes
+            filteredQuotes={filteredQuotes}
+            category={category}
+            addToFavorites={addToFavorites}
+            favoriteQuotes={favoriteQuotes}
+          />
+        )}
       </main>
       <Footer />
     </div>
   );
 }
-
 export default App;

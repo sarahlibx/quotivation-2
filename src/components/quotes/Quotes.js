@@ -1,7 +1,7 @@
 import React from "react";
 import QuoteCard from "./QuoteCard";
 
-function Quotes({ filteredQuotes, addToFavorites, category }) {
+function Quotes({ filteredQuotes, addToFavorites, category, favoriteQuotes }) {
   return (
     <section>
       <div className='quotes'>
@@ -12,7 +12,7 @@ function Quotes({ filteredQuotes, addToFavorites, category }) {
           </p>
         }
         {filteredQuotes.map((quote) => (
-          <QuoteCard key={quote.id} quote={quote} addToFavorites={addToFavorites} />
+          <QuoteCard key={quote.id} quote={quote} addToFavorites={addToFavorites} favoriteQuotes={favoriteQuotes} />
         ))}
       </div>
     </section>
