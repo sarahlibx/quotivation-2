@@ -5,7 +5,6 @@ function QuoteCard({ quote, addToFavorites, favoriteQuotes }) {
   const alreadyFavorite = favoriteQuotes && favoriteQuotes.find((favorite) => favorite.id === quote.id);
 
   const faveStyle = alreadyFavorite ? "#931c1d" : "grey";
-  console.log(faveStyle);
 
   return (
     <div className='quote-card'>

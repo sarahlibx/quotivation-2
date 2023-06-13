@@ -63,13 +63,15 @@ function App() {
     const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id);
 
     if (alreadyFavorite) {
-      console.log("already in favorites");
       removeFromFavorites(quoteId);
     } else {
       if (favoriteQuotes.length < MAXFAVES) {
-        // setMessageText("Added to Favorites! :)");
-        // setShowMessage(true);
+        setMessageText("Added to Favorites! :)");
+        setShowMessage(true);
         setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
+      } else {
+        setMessageText("Max number of favorite quotes reached. Remove one to add another.");
+        setShowMessage(true);
       }
     }
   };
@@ -90,7 +92,12 @@ function App() {
       <main>
         <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFromFavorites={removeFromFavorites} />
         {randomQuote && (
-          <RandomQuote randomQuote={randomQuote} displayRandomQuote={displayRandomQuote} addToFavorites={addToFavorites} />
+          <RandomQuote
+            randomQuote={randomQuote}
+            displayRandomQuote={displayRandomQuote}
+            favoriteQuotes={favoriteQuotes}
+            addToFavorites={addToFavorites}
+          />
         )}
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
         {loading ? (
