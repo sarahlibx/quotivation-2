@@ -119,17 +119,18 @@ footer {
   font-size: 1.3125rem;
 }
 
-.random-quote header button {
+.random-quote button {
   background-color: #54577c;
   color: #faffd8;
   padding: 7px 12px;
   border: 0;
   font-size: 1rem;
   cursor: pointer;
+  margin-bottom: 1rem;
   transition: 0.3s;
 }
 
-.random-quote header button:hover {
+.random-quote button:hover {
   background-color: #222332;
   color: #f6f9e3;
   box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.33);
@@ -206,6 +207,21 @@ footer {
   background-color: #faffd8;
 }
 
+.quote-card > div h3 {
+  margin: 3rem 0;
+}
+
+.quote-card .categories {
+  font-size: 1.1em;
+}
+
+.quote-card .category {
+  padding: 0.5rem;
+  background-color: #54577c;
+  color: #faffd8;
+  margin-right: 10px;
+}
+
 .quote-card .add-favorite {
   width: 5ch;
   margin: 2rem 0 0;
@@ -224,6 +240,34 @@ footer {
 
 .quote-card .add-favorite:hover svg {
   color: #faffd8;
+}
+
+.quote-card.quote-card.quote-of-the-day {
+  padding: 0 2rem;
+}
+.quote-card.quote-of-the-day h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.quote-card.quote-of-the-day > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+.quote-card.quote-of-the-day > div h3 {
+  flex: 1;
+}
+
+.quote-card.quote-of-the-day .add-favorite {
+  margin: 0;
+}
+
+.quote-card.quote-of-the-day .add-favorite svg {
+  margin: 0;
 }
 
 @media (min-width: 800px) {
@@ -251,6 +295,6 @@ footer {
     justify-content: flex-start;
   }
   .quote-card {
-    width: calc(33% - 1rem);
+    width: calc(33% - 0.5rem);
   }
 }

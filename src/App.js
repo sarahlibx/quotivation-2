@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import { Loader } from "react-feather";
 import CategoryForm from "./components/quotes/CategoryForm";
 import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
-import RandomQuote from "./components/quotes/RandomQuote";
+import QuoteOfTheDay from "./components/quotes/QuoteOfTheDay";
 import Quotes from "./components/quotes/Quotes";
 import Message from "./components/Message";
 import "./App.css";
@@ -13,7 +13,7 @@ function App() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("All");
-  const [randomQuote, setRandomQuote] = useState("");
+  const [quoteOfTheDay, setQuoteOfTheDay] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState("");
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
@@ -28,7 +28,6 @@ function App() {
       setLoading(true);
       const response = await fetch(quotesUrl);
       const results = await response.json();
-      console.log(results);
       setQuotes(results);
     } catch (error) {
       console.log("There was an error", error);
@@ -48,6 +47,10 @@ function App() {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
 
+  // useEffect(() => {
+  //   window.localStorage.setItem("quoteOfTheDay", quoteOfTheDay);
+  // }, [quoteOfTheDay]);
+
   const filteredQuotes = category !== "All" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
 
   const handleCategoryChange = (e) => {
@@ -55,7 +58,7 @@ function App() {
   };
 
   const displayRandomQuote = () => {
-    setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    setQuoteOfTheDay(quotes[Math.floor(Math.random() * quotes.length)]);
   };
 
   const addToFavorites = (quoteId) => {
@@ -90,15 +93,16 @@ function App() {
       {showMessage && <Message messageText={messageText} removeMessage={removeMessage} />}
       <Header />
       <main>
-        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFromFavorites={removeFromFavorites} />
-        {randomQuote && (
-          <RandomQuote
-            randomQuote={randomQuote}
+        {quoteOfTheDay && (
+          <QuoteOfTheDay
+            quoteOfTheDay={quoteOfTheDay}
             displayRandomQuote={displayRandomQuote}
             favoriteQuotes={favoriteQuotes}
             addToFavorites={addToFavorites}
           />
         )}
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={MAXFAVES} removeFromFavorites={removeFromFavorites} />
+
         <CategoryForm categories={categories} handleCategoryChange={handleCategoryChange} category={category} />
         {loading ? (
           <Loader />
