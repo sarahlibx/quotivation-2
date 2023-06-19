@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-  return <footer className='wrapper'>Copyright 2023</footer>;
+  return <footer className='wrapper'>&copy; 2023 Quotivation</footer>;
 };
 
 export default Footer;
