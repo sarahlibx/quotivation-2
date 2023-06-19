@@ -1,16 +1,17 @@
 import React from "react";
+import { Filter } from "react-feather";
 
 function CategoryForm({ categories, category, handleCategoryChange }) {
   return (
-    <form
-      className='category-filter'
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
-      <fieldset>
-        <legend>Filter Quotes</legend>
-        <label htmlFor='category'>Category:</label>
+    <div className='category-form'>
+      <form
+        className='category-filter'
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <Filter />
+        <label htmlFor='category'>Filter Quotes:</label>
         <select id='category' name='category' value={category} onChange={handleCategoryChange}>
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -18,8 +19,8 @@ function CategoryForm({ categories, category, handleCategoryChange }) {
             </option>
           ))}
         </select>
-      </fieldset>
-    </form>
+      </form>
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ import { Heart } from "react-feather";
 function QuoteCard({ quote, addToFavorites, favoriteQuotes, quoteOfTheDay = false }) {
   const alreadyFavorite = favoriteQuotes && favoriteQuotes.find((favorite) => favorite.id === quote.id);
 
-  const faveStyle = alreadyFavorite ? "#931c1d" : "grey";
+  const faveStyle = alreadyFavorite ? "#333" : "";
 
   return (
     <article className={`quote-card ${quoteOfTheDay ? "quote-of-the-day" : ""}`}>
@@ -19,10 +19,12 @@ function QuoteCard({ quote, addToFavorites, favoriteQuotes, quoteOfTheDay = fals
         </p>
         <h3>{quote.text}</h3>
       </div>
-      <p>{quote.author}</p>
-      <p className='add-favorite' onClick={() => addToFavorites(quote.id)}>
-        <Heart style={{ color: faveStyle }} />
-      </p>
+      <footer>
+        <p className='author'>{quote.author}</p>
+        <p className='add-favorite' onClick={() => addToFavorites(quote.id)}>
+          <Heart style={{ fill: faveStyle }} />
+        </p>
+      </footer>
     </article>
   );
 }

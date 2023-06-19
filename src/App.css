@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Public Sans", sans-serif;
 }
 
 img,
@@ -13,7 +13,7 @@ svg {
 }
 
 svg {
-  color: #54577c;
+  color: #ad7000;
   width: 70px;
   height: 70px;
   margin: 1rem auto;
@@ -23,12 +23,11 @@ h1 {
   font-size: 4rem;
   letter-spacing: 4px;
   text-align: center;
-  font-family: "Abril Fatface", cursive;
+  font-family: "Pacifico", cursive;
 }
 
 h2 {
   text-align: center;
-  font-family: "Quicksand", sans-serif;
   font-size: 1.5rem;
 }
 
@@ -37,18 +36,48 @@ h3 {
 }
 
 .App {
-  width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
 }
 
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 main {
-  margin: 6rem auto 0;
-  font-family: "Quicksand", sans-serif;
-  flex: 1;
+  width: 100%;
+}
+
+header {
+  background: #ffe7a8;
+  width: 100%;
+}
+
+header h1 {
+  text-align: left;
+  margin-top: 4rem;
+  font-weight: 400;
+  padding-left: 1rem;
+  font-size: 1.75rem;
+  letter-spacing: 0.6px;
+}
+
+header h1 span {
+  font-weight: 400;
+  font-size: 6.25rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  line-height: 33px;
+  font-family: "Redacted Script", cursive;
+}
+header h2 {
+  font-size: 3.4375rem;
+  font-weight: 700;
 }
 
 footer {
@@ -63,9 +92,9 @@ footer {
   text-align: center;
   font-size: 1.25rem;
   width: 70%;
-  background-color: #faffd8;
-  color: #54577c;
-  border: 2px solid #54577c;
+  background-color: #fff2cf;
+  color: #ad7000;
+  border: 2px solid #ad7000;
   padding: 3rem 1.5rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -91,60 +120,131 @@ footer {
 }
 
 .message .close-message:hover {
-  background-color: #54577c;
-  color: #faffd8;
+  background-color: ad7000;
+  color: #fbfde9;
 }
 
-.favorite-quotes h3 {
-  width: 100%;
+.favorite-quotes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: #ffe7a8;
+  position: relative;
+}
+
+.favorite-quotes .quotes h3 {
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
 
 .favorite-quotes .quote-card {
-  background-color: #54577c;
-  color: #faffd8;
-  border: 0;
-}
-
-.random-quote header {
+  margin: 4.375rem 0;
   display: flex;
-  font-size: 1.5rem;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  border: 2px solid #ad7000;
+  border-radius: 26px;
+  background-color: transparent;
+  font-size: 2rem;
+  color: #ad7000;
+}
+
+.favorite-quotes .quote-card::before {
+  content: "#" attr(data-list-position);
+  padding: 0 1rem;
+  counter-increment: list-item;
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 51.5px);
+  width: 85px;
+  height: 20px;
+  font-family: "Mukta Mahee", sans-serif;
+  font-size: 3.75rem;
   text-align: center;
+  line-height: 20px;
+  font-weight: 700;
+  background-color: #ffe7a8;
+}
+
+.favorite-quotes .quote-card h3 {
+  text-align: center;
+  font-size: 1.625rem;
+  width: 90%;
+  line-height: 38px;
+  text-align: center;
+}
+
+.favorite-quotes .quote-card p {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.favorite-quotes .favorite-quotes-description {
+  width: 80%;
+  text-align: center;
+  color: #ad7000;
+  padding-bottom: 2rem;
   margin-bottom: 2rem;
 }
 
-.random-quote header h3 {
-  font-size: 1.3125rem;
+.favorite-quotes .favorite-quotes-description p {
+  margin: 0.4rem;
+  font-size: 1.125rem;
 }
 
-.random-quote button {
-  background-color: #54577c;
-  color: #faffd8;
-  padding: 7px 12px;
-  border: 0;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: 0.3s;
-}
-
-.random-quote button:hover {
-  background-color: #222332;
-  color: #f6f9e3;
-  box-shadow: 9px 6px 16px -4px rgba(84, 84, 84, 0.33);
-}
-
-.random-quote .quote-card {
-  background-color: #faffd8;
+.category-header {
   width: 100%;
-  margin-bottom: 2rem;
-  background-origin: padding-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.category-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  width: 100%;
+  margin: 90px 0;
+}
+
+.quotes .category-header p {
+  width: auto;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.category-header #category {
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.17);
+  border-radius: 26px;
+  width: 245px;
+  height: 45px;
+  outline: 0;
+  border: 0;
+  font-family: inherit;
+  font-size: 1.25rem;
 }
 
 .category-filter {
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3125rem;
+}
+
+.category-filter label {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-left: 0.5rem;
+}
+
+.category-filter svg {
+  width: 15px;
+  height: 15px;
+  fill: black;
+  color: black;
 }
 
 .category-filter fieldset {
@@ -157,6 +257,7 @@ footer {
   font-size: inherit;
   font-family: inherit;
   padding: 7px 10px;
+  background-color: #ffffff;
 }
 
 .quotes {
@@ -164,12 +265,12 @@ footer {
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 3rem;
-  gap: 1rem;
+  gap: 2.5rem;
 }
 
 .quotes h3 {
-  font-size: 1.5rem;
-  font-family: "PT Sans", sans-serif;
+  font-size: 1.75rem;
+  line-height: 39px;
 }
 
 .quotes p {
@@ -179,14 +280,16 @@ footer {
 
 .quote-card {
   border: 1px solid #ccc;
+  border-radius: 26px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
+  font-size: 1.75rem;
   width: 100%;
-  max-width: 100%s;
-  background-color: #9aa899;
+  max-width: 100%;
+  background-color: #88bbc1;
 }
 
 .quote-card .close-quote {
@@ -198,85 +301,64 @@ footer {
 }
 
 .quote-card .close-quote {
-  background-color: #54577c;
-  transition: 0.3s;
+  color: #ad7000;
+  transition: 0.1s;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .quote-card .close-quote:hover {
-  color: #54577c;
-  background-color: #faffd8;
+  transform: scale(1.2);
 }
 
-.quote-card > div h3 {
+.quote-card div > h3 {
   margin: 3rem 0;
+  font-weight: 400;
 }
 
 .quote-card .categories {
-  font-size: 1.1em;
+  font-size: 1rem;
+  font-weight: 800;
 }
 
 .quote-card .category {
-  padding: 0.5rem;
-  background-color: #54577c;
-  color: #faffd8;
-  margin-right: 10px;
+  color: #000;
+  text-transform: uppercase;
+  margin-right: 12px;
+}
+
+.quote-card footer {
+  padding: 0;
+}
+
+.quote-card .author {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: left;
+  margin: 0;
 }
 
 .quote-card .add-favorite {
-  width: 5ch;
-  margin: 2rem 0 0;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.35rem;
-  align-self: flex-end;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   transition: 0.3s;
+  text-align: right;
+  margin-left: auto;
 }
 
 .quote-card .add-favorite svg {
-  color: gray;
+  color: #333;
   max-width: 60px;
+  width: 2ch;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
 }
 
 .quote-card .add-favorite:hover svg {
-  color: #faffd8;
-}
-
-.quote-card.quote-card.quote-of-the-day {
-  padding: 0 2rem;
-}
-.quote-card.quote-of-the-day h2 {
-  font-size: 2rem;
-  text-align: center;
-}
-
-.quote-card.quote-of-the-day > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-between;
-}
-.quote-card.quote-of-the-day > div h3 {
-  flex: 1;
-}
-
-.quote-card.quote-of-the-day .add-favorite {
-  margin: 0;
-}
-
-.quote-card.quote-of-the-day .add-favorite svg {
-  margin: 0;
-}
-
-@media (min-width: 800px) {
-  .quotes {
-    justify-content: space-between;
-  }
-  .quote-card {
-    width: 48%;
-  }
+  color: #000;
 }
 
 @keyframes slide-down {
@@ -290,11 +372,42 @@ footer {
   }
 }
 
+@media (min-width: 800px) {
+  .all-quotes .quotes {
+    justify-content: space-between;
+  }
+  .all-quotes .quote-card {
+    width: calc(50% - 2.5rem);
+  }
+  .quotes .category-header {
+    justify-content: space-between;
+  }
+  .favorite-quotes .quote-card h3 {
+    font-size: 2rem;
+    width: 70%;
+    line-height: 44px;
+    text-align: center;
+  }
+  .favorite-quotes .quote-card p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
 @media (min-width: 1400px) {
-  .quotes {
+  .all-quotes .quotes {
     justify-content: flex-start;
   }
-  .quote-card {
-    width: calc(33% - 0.5rem);
+  .all-quotes .quote-card {
+    width: calc(33% - 1.42rem);
+  }
+  .category-header {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .quotes .category-header p {
+    text-align: left;
   }
 }

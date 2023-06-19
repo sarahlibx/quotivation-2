@@ -1,14 +1,14 @@
 import React from "react";
 
-function FavoriteQuoteCard({ quote, removeFromFavorites }) {
+function FavoriteQuoteCard({ quote, removeFromFavorites, listPosition }) {
   return (
-    <div className='quote-card'>
+    <li className='quote-card' data-list-position={listPosition}>
       <span className='close-quote' onClick={() => removeFromFavorites(quote.id)}>
-        X
+        x
       </span>
       <h3>{quote.text}</h3>
       <p>{quote.author}</p>
-    </div>
+    </li>
   );
 }
 
