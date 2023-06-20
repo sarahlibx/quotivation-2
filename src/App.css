@@ -36,10 +36,10 @@ h3 {
 }
 
 .App {
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
   height: 100vh;
 }
 
@@ -54,27 +54,28 @@ main {
 }
 
 header {
-  background: #ffe7a8;
   width: 100%;
+  background: #ffe7a8;
 }
 
 header h1 {
   text-align: left;
   margin-top: 4rem;
-  font-weight: 400;
   padding-left: 1rem;
+  font-weight: 400;
   font-size: 1.75rem;
   letter-spacing: 0.6px;
 }
 
 header h1 span {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-family: "Redacted Script", cursive;
   font-weight: 400;
   font-size: 6.25rem;
-  margin-right: 0.5rem;
-  display: inline-block;
   line-height: 33px;
-  font-family: "Redacted Script", cursive;
 }
+
 header h2 {
   font-size: 3.4375rem;
   font-weight: 700;
@@ -89,9 +90,11 @@ footer {
   position: fixed;
   top: 20vh;
   left: 15%;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
   text-align: center;
   font-size: 1.25rem;
-  width: 70%;
   background-color: #fff2cf;
   color: #ad7000;
   border: 2px solid #ad7000;
@@ -100,8 +103,6 @@ footer {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
-  display: flex;
-  justify-content: "space-between";
 }
 
 .message:hover .close-message {
@@ -151,43 +152,41 @@ footer {
   color: #ad7000;
 }
 
-.favorite-quotes .quote-card::before {
+/* .favorite-quotes .quote-card::before {
   content: "#" attr(data-list-position);
   padding: 0 1rem;
-  counter-increment: list-item;
   position: absolute;
   top: -12px;
   left: calc(50% - 51.5px);
   width: 85px;
   height: 20px;
+  text-align: center;
   font-family: "Mukta Mahee", sans-serif;
   font-size: 3.75rem;
-  text-align: center;
   line-height: 20px;
   font-weight: 700;
   background-color: #ffe7a8;
-}
+} */
 
 .favorite-quotes .quote-card h3 {
+  width: 90%;
   text-align: center;
   font-size: 1.625rem;
-  width: 90%;
   line-height: 38px;
-  text-align: center;
 }
 
 .favorite-quotes .quote-card p {
+  text-align: center;
   font-size: 1.25rem;
   font-weight: 700;
-  text-align: center;
 }
 
 .favorite-quotes .favorite-quotes-description {
   width: 80%;
-  text-align: center;
-  color: #ad7000;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
+  text-align: center;
+  color: #ad7000;
 }
 
 .favorite-quotes .favorite-quotes-description p {
@@ -196,31 +195,31 @@ footer {
 }
 
 .category-header {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
   gap: 1rem;
 }
 
 .category-header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
   width: 100%;
   margin: 90px 0;
+  font-weight: 700;
+  font-size: 2.5rem;
 }
 
 .quotes .category-header p {
   width: auto;
-  text-align: center;
   margin-top: 12px;
+  text-align: center;
 }
 
 .category-header #category {
-  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.17);
-  border-radius: 26px;
   width: 245px;
   height: 45px;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.17);
+  border-radius: 26px;
   outline: 0;
   border: 0;
   font-family: inherit;
@@ -234,9 +233,9 @@ footer {
 }
 
 .category-filter label {
+  margin-left: 0.5rem;
   font-size: 1.25rem;
   font-weight: 800;
-  margin-left: 0.5rem;
 }
 
 .category-filter svg {
@@ -253,9 +252,9 @@ footer {
 
 .category-filter select {
   margin-left: 2rem;
+  padding: 7px 10px;
   font-size: inherit;
   font-family: inherit;
-  padding: 7px 10px;
   background-color: #ffffff;
 }
 
@@ -278,25 +277,25 @@ footer {
 }
 
 .quote-card {
-  border: 1px solid #ccc;
-  border-radius: 26px;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
-  font-size: 1.75rem;
+  position: relative;
   width: 100%;
   max-width: 100%;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 26px;
   background-color: #88bbc1;
+  font-size: 1.75rem;
 }
 
 .quote-card .close-quote {
   position: absolute;
-  padding: 1rem;
-  cursor: pointer;
   top: 0;
   right: 0;
+  padding: 1rem;
+  cursor: pointer;
 }
 
 .quote-card .close-quote {
@@ -321,9 +320,9 @@ footer {
 }
 
 .quote-card .category {
+  margin-right: 12px;
   color: #000;
   text-transform: uppercase;
-  margin-right: 12px;
 }
 
 .quote-card footer {
@@ -331,29 +330,29 @@ footer {
 }
 
 .quote-card .author {
+  margin: 0;
+  text-align: left;
   font-size: 1.5rem;
   font-weight: 700;
-  text-align: left;
-  margin: 0;
 }
 
 .quote-card .add-favorite {
   width: 100%;
   margin: 0;
   padding: 0;
+  margin-left: auto;
+  text-align: right;
   cursor: pointer;
   transition: 0.3s;
-  text-align: right;
-  margin-left: auto;
 }
 
 .quote-card .add-favorite svg {
-  color: #333;
-  max-width: 60px;
-  width: 2ch;
   display: inline-block;
-  padding: 0;
+  width: 2ch;
+  max-width: 60px;
   margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 .quote-card .add-favorite:hover svg {
@@ -382,15 +381,14 @@ footer {
     justify-content: space-between;
   }
   .favorite-quotes .quote-card h3 {
-    font-size: 2rem;
     width: 70%;
     line-height: 44px;
-    text-align: center;
+    font-size: 2rem;
   }
   .favorite-quotes .quote-card p {
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 700;
-    text-align: center;
   }
 }
 
@@ -405,7 +403,6 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
   }
-
   .quotes .category-header p {
     text-align: left;
   }

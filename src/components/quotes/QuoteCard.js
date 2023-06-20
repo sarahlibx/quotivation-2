@@ -1,14 +1,9 @@
 import React from "react";
 import { Heart } from "react-feather";
 
-function QuoteCard({ quote, addToFavorites, favoriteQuotes, quoteOfTheDay = false }) {
-  const alreadyFavorite = favoriteQuotes && favoriteQuotes.find((favorite) => favorite.id === quote.id);
-
-  const faveStyle = alreadyFavorite ? "#333" : "";
-
+function QuoteCard({ quote, addToFavorites }) {
   return (
-    <article className={`quote-card ${quoteOfTheDay ? "quote-of-the-day" : ""}`}>
-      {quoteOfTheDay && <h2>Quote of the day</h2>}
+    <article className={"quote-card"}>
       <div>
         <p className='categories'>
           {quote.categories.map((category) => (
@@ -22,7 +17,7 @@ function QuoteCard({ quote, addToFavorites, favoriteQuotes, quoteOfTheDay = fals
       <footer>
         <p className='author'>{quote.author}</p>
         <p className='add-favorite' onClick={() => addToFavorites(quote.id)}>
-          <Heart style={{ fill: faveStyle }} />
+          <Heart />
         </p>
       </footer>
     </article>
