@@ -14,7 +14,7 @@ const Message = ({ messageText, removeMessage }) => {
       <p>{messageText}</p>
 
       <span className='close-message' onClick={removeMessage}>
-        X
+        x
       </span>
     </div>
   );
