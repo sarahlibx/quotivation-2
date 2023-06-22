@@ -1,5 +1,4 @@
 import React from "react";
-import { Heart } from "react-feather";
 
 function QuoteCard({ quote }) {
   return (
