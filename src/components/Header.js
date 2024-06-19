@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
   return (
     <header>
-      <div className='wrapper'>
+      <div className="wrapper">
         <h1>
           <span>“</span>Quotivation
         </h1>
